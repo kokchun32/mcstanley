@@ -1,17 +1,45 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'McStanley Cafe', homepage_path, :class =>  "navbar-brand" %>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li><a href="#">All Users</a></li>
+      <li><a href="#">Log Out</a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+</nav>
+
 <p id="notice"><%= notice %></p>
+
+<head>
+  <title>Booking</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
 <h1>Bookings</h1>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="3">Date and Time</th>
     </tr>
   </thead>
 
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
+        <td><%= booking.date_time %></td>
+        <td><%= booking.name %></td>
+        <td><%= booking.phone_no %></td>
+        <td><%= booking.no_ppl %></td>
+        <td><%= booking.message %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
