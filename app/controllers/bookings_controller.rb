@@ -24,15 +24,24 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    # @booking = Booking.new(booking_params)
+
+    # respond_to do |format|
+    #   if @booking.save
+    #     format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+    #     format.json { render :show, status: :created, location: @booking }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @booking.errors, status: :unprocessable_entity }
+    #   end
+    # end
     @booking = Booking.new(booking_params)
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
+        format.html { redirect_to '/homepage#booking', notice: 'Your booking was successfully created. We will contact you shortly.' }
       else
         format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,6 +70,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def homepage
+    @booking = Booking.new
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
@@ -69,6 +82,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.fetch(:booking, {})
+      params.fetch(:booking).permit(:name, :no_ppl, :date_time, :message, :phone_no, :term)
     end
 end

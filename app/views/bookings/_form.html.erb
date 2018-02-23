@@ -1,17 +1,13 @@
 <%= form_with(model: booking, local: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+      <%= form.text_field :name, placeholder: "Name", :class => "w3-input w3-padding-16 w3-border"%>
+      
+      <%= form.text_field :phone_no, placeholder: "Contact No (eg. 012-3456789)", :class => "w3-input w3-padding-16 w3-border"%>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= form.text_field :no_ppl, placeholder: "How many people", :class => "w3-input w3-padding-16 w3-border"%>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <%= form.datetime_local_field :date_time, placeholder: "Date and time", value: "2017-11-16T20:00", :class => "w3-input w3-padding-16 w3-border"%>
+
+      <%= form.text_field :message, placeholder: "Message \ Special requirements", :class => "w3-input w3-padding-16 w3-border"%>
+
+      <%= form.submit 'Send Message', :class => 'w3-button w3-black' %>
 <% end %>
