@@ -1,23 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<% if current_user %>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'McStanley Cafe', homepage_path, :class =>  "navbar-brand" %>
+    </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'All Bookings', bookings_path %></li>
+        <li><%= link_to 'Bookings Today', bookings_today_path %></li> 
+        <li><%= link_to 'All User', users_index_path %></li>    
+        <li><%= link_to 'Log Out', logout_path %></li>
+      </ul>
+  </div>
+</nav>
+
+<head>
+  <title>All Booking</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<h2 style="color:blue;">List of Users</h2>
+<br>
+<h3 style="color:green"><%= link_to 'Create New User', signup_path %></h3>
 
   <div class="card">
     <% @users.each do |u| %>
       <img src="<%= u.image %>" alt="<%= u.username %>" style="width:100%">
       <h1><%= u.username %></h1>
-      <p class="title">CEO & Founder, Example</p>
-      <p>Harvard University</p>
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p><button>Contact</button></p>
+      <p class="title">Asset of McStanley</p>
+      <p><%= u.role %></p>
+      <p><button>McStanley Cafe</button></p>
     <% end %>
   </div>
 
-  
-<div class="btn-group">
-  <button type="button" id="button">Click here for something fun</button>
-</div>
-<div id="joke_container"></div>
+<% else %>
+    <h1 style="color:grey"> Oooopppss! Sorry, you are not authorized to view this page! </h1>
+<% end %>

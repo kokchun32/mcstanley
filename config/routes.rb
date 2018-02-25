@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/signup' => 'users#new'
+  get '/signup' => 'users#new', as: "signup"
   post '/users' => 'users#create'
 
   get "/users/index" => 'users#index'
