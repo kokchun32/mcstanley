@@ -74,6 +74,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def bookings_today
+    @bookings = Booking.where('DATE(date_time) = ?', Date.today)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking

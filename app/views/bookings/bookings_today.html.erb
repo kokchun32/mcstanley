@@ -1,0 +1,25 @@
+
+<% if @bookings.empty? %>
+    <h1> You do not have booking(s) today </h1>
+
+<% else %>    
+
+    <% @bookings.each do |b| %>
+      <tr>
+        <td><%= b.date_time %></td>
+        <td><%= b.name %></td>
+        <td><%= b.phone_no %></td>
+        <td><%= b.no_ppl %></td>
+        <td><%= b.message %></td>
+        <td><%= link_to 'Edit', edit_booking_path(b) %></td>
+        <td><%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+<% end %>
+
+<% if current_user %>
+    Signed in as <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+    <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
