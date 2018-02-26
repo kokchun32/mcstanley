@@ -48,7 +48,7 @@
       <th>Pax</th>
       <th>Message</th>
       <th>Edit</th>
-      <% if current_user.role == 'admin' %>
+      <% if current_user.role = 'admin' %>
         <th>Delete</th>
       <% end %>
     </tr>
@@ -63,10 +63,9 @@
         <td><%= booking.no_ppl %></td>
         <td><%= booking.message %></td>
         <td><%= link_to image_tag("https://cdn1.iconfinder.com/data/icons/hawcons/32/698873-icon-136-document-edit-512.png", :style => 'height :20px; width :20px;'), edit_booking_path(booking) %></td>
-        <% if current_user.role == 'admin' %>
+        <% if current_user.role = 'admin' %>
           <td><%= link_to image_tag("https://vignette.wikia.nocookie.net/criminal-case-grimsborough/images/b/b1/Delete_Icon.png/revision/latest?cb=20141216101607", :style => 'height :20px; width :20px;'), booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+        <% end %> 
     <% end %>
   </tbody>
 </table>
