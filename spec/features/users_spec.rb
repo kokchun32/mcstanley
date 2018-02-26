@@ -5,8 +5,6 @@ RSpec.feature "Users", type: :feature do
     it "create new user" do
       visit '/signup'
       within('form') do
-        # fill_in 'Username', with: 'Ali', visible: false
-        # fill_in 'Password', with: 'ali', visible: false
         fill_in 'user_username', with: 'Ali'
         fill_in 'user_password', with: 'ali'
       end

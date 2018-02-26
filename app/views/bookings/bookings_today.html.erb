@@ -35,24 +35,43 @@
     <% if @bookings.empty? %>
         <h1 style="color:grey"> You do not have booking(s) today </h1>
 
-    <% else %>    
+    <% else %>  
 
-        <% @bookings.each do |b| %>
+      <table class="w3-table-all w3-hoverable">
+
+        <thead>
           <tr>
-            <td><%= b.date_time %></td>
-            <td><%= b.name %></td>
-            <td><%= b.phone_no %></td>
-            <td><%= b.no_ppl %></td>
-            <td><%= b.message %></td>
-            <td><%= link_to 'Edit', edit_booking_path(b) %></td>
-            <td><%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Name</th>
+            <th>Date and Time</th>
+            <th>Phone No</th>
+            <th>Pax</th>
+            <th>Message</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
-        <% end %>
+        </thead>
+
+        <tbody>
+          <% @bookings.each do |b| %>
+            <tr>
+              <td><%= b.date_time %></td>
+              <td><%= b.name %></td>
+              <td><%= b.phone_no %></td>
+              <td><%= b.no_ppl %></td>
+              <td><%= b.message %></td>
+              <td><%= link_to 'Edit', edit_booking_path(b) %></td>
+              <td><%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
     <% end %>
+
+<br><br>
   
 <div class="btn-group">
-  <button type="button" id="button">Click here for something fun</button>
+  <button type="button" id="button">Stressed Out???Click here for something fun</button>
 </div>
 <div id="joke_container"></div>
 

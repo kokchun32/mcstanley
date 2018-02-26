@@ -32,6 +32,9 @@
           <a href="#menu" class="w3-bar-item w3-button">Menu</a>
           <a href="#where" class="w3-bar-item w3-button">Where</a>
           <a href="#booking" class="w3-bar-item w3-button">Booking</a>
+          <% if current_user %>
+            <a href="/bookings" class="w3-bar-item w3-button">Booking List</a>
+          <% end %>
         </div>
       </div>
     </div>

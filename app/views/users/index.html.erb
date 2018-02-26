@@ -35,8 +35,7 @@
     <% @users.each do |u| %>
       <img src="<%= u.image %>" alt="<%= u.username %>" style="width:100%">
       <h1><%= u.username %></h1>
-      <p class="title">Asset of McStanley</p>
-      <p><%= u.role %></p>
+      <p class="title"><%= u.role %> of McStanley</p>
       <p><button>McStanley Cafe</button></p>
     <% end %>
   </div>
