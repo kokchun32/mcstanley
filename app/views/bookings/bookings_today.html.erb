@@ -47,7 +47,9 @@
             <th>Pax</th>
             <th>Message</th>
             <th>Edit</th>
-            <th>Delete</th>
+            <% if current_user.role == 'admin' %>
+              <th>Delete</th>
+            <% end %>
           </tr>
         </thead>
 
@@ -60,7 +62,9 @@
               <td><%= b.no_ppl %></td>
               <td><%= b.message %></td>
               <td><%= link_to 'Edit', edit_booking_path(b) %></td>
-              <td><%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% if current_user.role == 'admin' %>
+                <td><%= link_to 'Destroy', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
